@@ -14,11 +14,57 @@ module.exports = db.sequelize.define(
         Type: {
             type: Sequelize.STRING
         },
-        Total: {
-            type: Sequelize.INTEGER(50)
-        }
+        
     },
     {
         timestamps: false
-    }
+    },
+    // "member",
+    // {
+    //     StudenID: {
+    //         type: Sequelize.STRING(20),
+    //         primaryKey: true,
+    //     },
+    //     // FirstName: {
+    //     //     type: Sequelize.TEXT
+    //     // },
+    //     // LastName: {
+    //     //     type: Sequelize.TEXT
+    //     // },
+    //     // Faculty: {
+    //     //     type: Sequelize.TEXT
+    //     // },
+    //     // PhoneNumber: {
+    //     //     type: Sequelize.STRING(20)
+    //     // },
+    //     // Email: {
+    //     //     type: Sequelize.TEXT
+    //     // }
+    // },{
+    //     timestamps: false
+    // },
+    // "borrow",{
+    //     BorrowID: {
+    //         type: Sequelize.STRING(20),
+    //         primaryKey: true,
+    //     },
+    //     status: { 
+    //         type: Sequelize.ENUM("borrowed","free"),
+    //     },
+    //     MemberID: {
+    //         type: Sequelize.STRING(20)
+    //     },
+    //     EquipID: {
+    //         type: Sequelize.STRING(20)
+    //     },
+    //     borrowDate: {
+    //         type: Sequelize.timestamps
+    //     },
+    //     ReturnDate: {
+    //         type: Sequelize.timestamps
+    //     }
+    // },
+    // {
+    //     timestamps: false
+    // }
 )

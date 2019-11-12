@@ -3,7 +3,7 @@ var router = express.Router()
 const Task = require("../model/Task")
 
 //Get All Tasks
-router.get("/task/:id", (req,res) => {
+router.get("/task/equipment", (req,res) => {
     Task.findAll()
     .then(tasks => {
         res.json(tasks)
@@ -14,19 +14,34 @@ router.get("/task/:id", (req,res) => {
     
 })
 
-//Get id Tasks
-router.get("/task/:id", (req,res) => {
-
-    Task.findById()
+//Get by id Tasks
+router.get("/task/equipment/:id", (req,res) => {
+    Task.findByPk(req.params.id)
     .then(tasks => {
-        res.send("Task get by id")
+        res.json(tasks)
     })
     .catch(err => {
         res.send("Error: " + err)
     })
 })
+
+//Get by name Tasks
+// router.get("/task/equipment/:name", (req,res) => {
+//     Task.findByPk({
+//         where: {
+//             EquipName: req.params.id
+//         }
+//     })
+//     .then(tasks => {
+//         res.json(tasks)
+//     })
+//     .catch(err => {
+//         res.send("Error: " + err)
+//     })
+// })
+
 //Add task
-router.post("/task", (req, res) => {
+router.post("/task/equipment", (req, res) => {
     if(!req.body.EquipName) {
         res.status(400)
         res.json({
@@ -45,7 +60,7 @@ router.post("/task", (req, res) => {
 
 
 //delete
-router.delete("/task/:id", (req, res) => {
+router.delete("/task/equipment/:id", (req, res) => {
     Task.destroy({
         where: {
             EquipID: req.params.id
@@ -60,7 +75,7 @@ router.delete("/task/:id", (req, res) => {
 })
 
 //Update Task
-router.put("/task/:id" , (req,res) => {
+router.put("/task/equipment/:id" , (req,res) => {
     if (!req.body.EquipName) {
         res.status(400)
         res.json({
@@ -71,7 +86,6 @@ router.put("/task/:id" , (req,res) => {
             { where: { EquipID: req.params.id}},
             { EquipName: req.body.EquipName},
             { Type: req.body.Type},
-            { Total: req.body.Total},
             
         )
             .then(() => {
@@ -81,5 +95,15 @@ router.put("/task/:id" , (req,res) => {
     }
 })
 
+// router.get("/task/member", (req,res) => {
+//     Task.findAll()
+//     .then(tasks => {
+//         res.json(tasks)
+//     }) 
+//     .catch(err => {
+//         res.send("error: " + err)
+//     })
+    
+// })
 
 module.exports = router

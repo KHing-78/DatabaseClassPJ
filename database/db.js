@@ -1,6 +1,6 @@
 const Sequelize = require("sequelize")
 const db = {}
-const sequelize = new  Sequelize("project_database", "root", "", {
+const sequelize = new  Sequelize("test", "root", "", {
     host: "localhost",
     dialect: "mysql",
     operatorsAliases: false,
@@ -15,5 +15,6 @@ const sequelize = new  Sequelize("project_database", "root", "", {
 
 db.sequelize = sequelize
 db.Sequelize = Sequelize
+db.sequelize = sequelize
 
 module.exports = db
